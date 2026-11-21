@@ -47,6 +47,7 @@ nav {
 }
 
 nav a {
+    display: inline-block;
     color: #ffffff;
     text-decoration: none;
     margin: 0 18px;
@@ -54,7 +55,7 @@ nav a {
 }
 
 nav a:hover,
-nav a:focus {
+nav a:focus-visible {
     color: #ffd166;
     text-decoration: underline;
 }
@@ -122,6 +123,7 @@ li {
 ================================= */
 
 form {
+    width: 100%;
     max-width: 700px;
 }
 
@@ -136,14 +138,22 @@ input[type="text"],
 input[type="email"],
 select,
 textarea {
+    display: block;
     width: 100%;
+    max-width: 100%;
     padding: 12px;
     margin: 6px 0 15px;
     border: 1px solid #767676;
     border-radius: 6px;
+    font-family: inherit;
     font-size: 15px;
     color: #222222;
     background-color: #ffffff;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
 input::placeholder,
@@ -152,11 +162,13 @@ textarea::placeholder {
     opacity: 1;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+/* Keyboard focus for form controls */
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
     outline: 2px solid #27496d;
-    outline-offset: 2px;
+    outline-offset: 3px;
 }
 
 fieldset {
@@ -187,14 +199,18 @@ button {
     padding: 12px 24px;
     margin: 10px 8px 10px 0;
     border-radius: 6px;
+    font-family: inherit;
     font-size: 15px;
     cursor: pointer;
 }
 
-button:hover,
-button:focus {
+button:hover {
     background-color: #142850;
-    color: #ffffff;
+}
+
+button:focus-visible {
+    outline: 3px solid #ffd166;
+    outline-offset: 3px;
 }
 
 /* =================================
@@ -218,17 +234,25 @@ footer p {
 
 @media (max-width: 600px) {
 
+    header {
+        padding: 25px 15px;
+    }
+
     header h1 {
         font-size: 24px;
     }
 
+    nav {
+        padding: 12px;
+    }
+
     nav a {
-        display: inline-block;
         margin: 6px;
     }
 
     main {
         padding: 0 12px;
+        margin: 15px auto;
     }
 
     section,
@@ -236,8 +260,16 @@ footer p {
         padding: 16px;
     }
 
-    fieldset label {
-        display: inline-block;
+    article {
+        padding: 12px 15px;
     }
 
+    fieldset label {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    button {
+        margin-right: 5px;
+    }
 }
